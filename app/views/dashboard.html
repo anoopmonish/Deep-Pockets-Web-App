@@ -1,0 +1,72 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Pocket</h4>
+				<p class="category">Assets</p>
+			</div>
+			<div class="content">
+				<div ng-if="loading">
+					<center><img src="img/spinner.gif"></center>
+				</div>
+				<div ng-if="dataFailed" class="text-danger">
+					<i class="pe-7s-info"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+				<div id="balancePie" class="ct-chart ct-perfect-fourth"></div>
+				<div class="footer">
+					<div class="legend">
+						<i class="fa fa-circle text-info"></i> Bank Savings
+						<i class="fa fa-circle text-danger"></i> Virtual Cash
+						<i class="fa fa-circle text-warning"></i> Cash on Hand
+					</div>
+					<hr>
+					<div class="stats">
+						<i class="fa fa-clock-o"></i> Dated today
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Balance</h4>
+				<p class="category">Statistics</p><br>
+				<div ng-if="dataFailed" class="text-danger">
+					<i class="pe-7s-info"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+			</div>
+			<div class="content">
+				<div class="panel panel-default">
+				  <div class="panel-body">
+					Total Balance<span class="text-danger pull-right"><b>{{totalassets|currency:symbol}}</b></span>
+				  </div>
+				</div>
+				<div class="panel panel-default">
+				  <div class="panel-body">
+					Bank Savings <span class="text-success pull-right"><b>{{bankbalance|currency:symbol}}</b></span>
+				  </div>
+				</div>
+				<div class="panel panel-default">
+				  <div class="panel-body">
+					Virtual Cash <span class="text-success pull-right"><b>{{creditbalance|currency:symbol}}</b></span>
+				  </div>
+				</div>
+				<div class="panel panel-default">
+				  <div class="panel-body">
+					Cash on Hand <span class="text-success pull-right"><b>{{cashonhand|currency:symbol}}</b></span>
+				  </div>
+				</div>
+				<br><br>
+				<div class="footer">
+					<hr>
+					<div class="stats">
+						<i class="fa fa-clock-o"></i> Dated today
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

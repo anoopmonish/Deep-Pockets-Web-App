@@ -1,0 +1,36 @@
+<div class="ngdialog-message">
+	<div class="">
+		<h4>Create New Account </h4>
+	</div>
+	<div class="">
+		<form name="createAccountForm" ng-submit="createAccount()">
+			<div class="form-group">
+				Account Name
+				<input type="text" ng-required="true" class="form-control input-sm" placeholder="Name" ng-model="account.name"/>
+			</div>
+			<div class="form-group">
+				Description
+				<input type="text" ng-required="true" class="form-control input-sm" placeholder="Description" ng-model="account.description"/>
+			</div>
+			<div class="form-group">
+				Type
+				<select ng-required="true" class="form-control input-xm" placeholder="Account Type" ng-model="account.type">
+				  <option value="type_bank">Bank Account</option>
+				  <option value="type_wallet">Online Wallet</option>
+				</select>
+			</div>
+			<div class="form-group">
+				Account Number
+				<input type="text" ng-required="true" class="form-control input-sm" placeholder="Account Number" ng-model="account.number"/>
+			</div>
+			<div class="form-group">
+				Amount
+				<input type="number" ng-required="true" min="0" class="form-control input-sm" placeholder="Amount" ng-model="account.balance"/>
+			</div>
+			<center><button ng-disabled="createAccountForm.$invalid||disableButton" type="submit" class="{{createAccountForm.$invalid ? 'btn btn-disabled btn-sm' : 'btn btn-info btn-fill btn-sm'}}">Create</button></center>
+			<div ng-if="loading">
+				<center><img src="img/spinner.gif"></center>
+			</div>
+		</form>
+	</div>
+</div>

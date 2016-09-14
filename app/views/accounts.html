@@ -1,0 +1,60 @@
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-xm btn-primary pull-right"
+			type="button" ng-click="openCreateAccount()">
+			<i class="fa fa-plus" aria-hidden="true"></i>Create New Account
+		</button><br><br><br>
+		<ul class="nav nav-tabs card-header-tabs pull-xs-left">
+			<li class="nav-item" ng-class="{active:isSelected(1)}">
+				<a href="" class="nav-link" ng-click="select(1)">Cash</a>
+			</li>
+			<li class="nav-item" ng-class="{active:isSelected(2)}">
+				<a href="" class="nav-link" ng-click="select(2)">Bank Accounts</a>
+			</li>
+			<li class="nav-item" ng-class="{active:isSelected(3)}">
+				<a href="" class="nav-link" ng-click="select(3)">Online Wallets</a>
+			</li>
+		</ul>
+		<ul class="list-group">
+			<li ng-if="loading" class="list-group-item">
+				<center><img src="img/spinner.gif"></center>
+			</li>
+			<li ng-if="dataFailed" class="list-group-item">
+				<div class="text-danger">
+					<i class="pe-7s-info"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+			</li>
+			<li class="list-group-item" ng-repeat="account in accounts|filter:filtText|orderBy:'name'">
+				<div class="card text-xs-center">
+					<div class="header">
+						<h4 class="title">
+							<div class="col-md-10">
+								{{account.name|uppercase}}
+								<button type="button" rel="tooltip" title="Edit" class="btn btn-info btn-simple btn-xm">
+									<i class="fa fa-edit"></i>
+								</button>
+							</div>
+							<div class="col-md-2">
+								<button ui-sref="app.records({id: account.id})" ng-click="setAccountNames(account.name,account.number)" type="button" class="btn btn-warning btn-block btn-fill">
+									<b>{{account.balance|currency:symbol}}</b>
+								</button>
+							</div>
+						</h4>
+						<p class="category">{{account.number}}&nbsp;
+						</p>
+					</div>
+					<div class="content">
+						<small>{{account.description}}</small>
+						<div class="footer">
+							<hr>
+							<div class="stats">
+								<i class="fa fa-clock-o"></i> Created on {{account.createdAt| date : "MMM dd y"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

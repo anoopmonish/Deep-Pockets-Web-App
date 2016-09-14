@@ -1,0 +1,69 @@
+<div class="row">
+	<div class="col-md-12">
+	<form>
+		<div class="form-group">
+			<label>Choose Account</label>
+			<select ng-required="true" ng-change="drawGraph()" class="form-control input-lg" ng-model="reportSelection"
+			ng-options="account.id as account.name for account in Accounts">
+			</select>
+		</div>
+	</form>
+		<div class="card ">
+			<div class="header">
+				<div class="row">
+					<div class="col-md-5">
+						<h4 class="title">Recent Transactions</h4>
+						<p class="category">Asset Fluctuation</p>
+					</div>
+					<div ng-if="lineloading" class="col-md-7">
+						<img src="img/spinner.gif">
+					</div>
+				</div>
+			</div>
+			<div class="content">
+				<div ng-if="dataFailed" class="text-danger">
+					<i class="pe-7s-info"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+				<div id="transactionActivity" class="ct-chart"></div>
+				<div class="footer">
+					<hr>
+					<div class="stats">
+						<i class="fa fa-check"></i> Data information certified
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Pocket</h4>
+				<p class="category">Total Balance</p>
+			</div>
+			<div class="content">
+				<div ng-if="loading">
+					<center><img src="img/spinner.gif"></center>
+				</div>
+				<div ng-if="dataFailed" class="text-danger">
+					<i class="pe-7s-info"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+				<div id="balancePie" class="ct-chart ct-perfect-fourth"></div>
+				<div class="footer">
+					<div class="legend">
+						<i class="fa fa-circle text-info"></i> Bank Savings
+						<i class="fa fa-circle text-danger"></i> Virtual Credit
+						<i class="fa fa-circle text-warning"></i> Cash on Hand
+					</div>
+					<hr>
+					<div class="stats">
+						<i class="fa fa-clock-o"></i> Dated today
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

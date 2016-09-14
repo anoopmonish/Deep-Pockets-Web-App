@@ -1,0 +1,36 @@
+{
+  "name": "deepPockets",
+  "description": "Finance Manager",
+  "main": "index.html",
+  "keywords": [
+    "deepPockets"
+  ],
+  "authors": [
+    "Anoop Monish"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "~4.5.0",
+    "pixeden-stroke-7-icon": "^1.2.3",
+    "angular": "~1.5",
+    "angular-ui-router": "~0.3.1",
+    "angular-mocks": "~1.5.5",
+    "angular-resource": "~1.5.5",
+    "angular-route": "^1.5.8",
+    "animate.css": "^3.5.2",
+    "ng-dialog": "~0.6.0",
+    "ngLoading": "ng-loading#^0.0.5",
+    "chartist": "^0.9.4",
+    "bootstrap-social": "^5.0.0"
+  }
+}

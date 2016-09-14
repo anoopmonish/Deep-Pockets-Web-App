@@ -1,0 +1,106 @@
+<div class="row">
+	<div ng-show="!edit" class="col-md-4">
+		<div class="card card-user">
+			<div class="image">
+				<button ng-click="editProfile()" type="button" rel="tooltip" title="Edit" class="btn btn-info btn-simple btn-xm pull-right">
+					<i class="fa fa-edit"></i>
+				</button></h4>
+			</div>
+			<div class="content">
+				<div class="author">
+					<img class="avatar border-gray" src="{{masterProfile.avatar}}" alt="..."/>
+						<div ng-if="loading">
+							<center><img src="img/spinner.gif"></center>
+						</div>
+						<div ng-if="dataFailed" class="text-danger">
+							<i class="pe-7s-info"></i>&nbsp;
+							<b>Connection failed. Please try later</b>
+						</div>
+						<h4 class="title">{{masterProfile.firstname}} {{masterProfile.lastname}}<br />
+							<small>{{masterProfile.username}}</small>
+						</h4>
+				</div>
+				<p class="description text-center">&nbsp;</p>
+			</div>
+			<hr>
+			<div class="text-center">
+				<button class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+				<button class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+				<button class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div ng-show="edit" class="col-md-12">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Edit Profile</h4>
+			</div>
+			<div class="content">
+				<form name="profileForm" ng-submit="updateProfile()">
+					<div class="row">
+						<div class="col-md-12">
+							<label>Avatar</label><br>
+							<a ng-repeat="avatar in avatars" href="">
+								<img ng-click="setAvatar(avatar)" class="img-thumbnail" ng-src="{{avatar}}" width="100" height="100"/> &nbsp;
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>First Name</label>
+								<input ng-required="true" type="text" class="form-control" placeholder="First Name" ng-model="slaveProfile.firstname"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Last Name</label>
+								<input ng-required="true" type="text" class="form-control" placeholder="Last Name" ng-model="slaveProfile.lastname"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Address</label>
+								<input type="text" class="form-control" placeholder="Home Address" ng-model="slaveProfile.address"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>City</label>
+								<input type="text" class="form-control" placeholder="City" ng-model="slaveProfile.city"/>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Country</label>
+								<input type="text" class="form-control" placeholder="Country" ng-model="slaveProfile.country"/>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Postal Code</label>
+								<input type="number" min="0" class="form-control" placeholder="ZIP Code" ng-model="slaveProfile.pincode"/>
+							</div>
+						</div>
+					</div>
+
+					<center><a ng-click="cancelEdit()" type="button" class="btn btn-default">Cancel</a>
+					<button ng-disabled="disablebutton" type="submit" class="btn btn-info btn-fill">Update Profile</button></center>
+					<div ng-if="loading">
+						<center><img src="img/spinner.gif"></center>
+					</div>					
+					<div class="clearfix">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

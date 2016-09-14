@@ -1,0 +1,47 @@
+<div class="content">
+	<div class="container-fluid">
+		<button class="btn btn-xm btn-default pull-left"
+			type="button" ui-sref="app.accounts">
+			<i class="fa fa-angle-left" aria-hidden="true"></i>Back to Accounts
+		</button><br><br><br>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="header">
+						<h4 class="title">{{accountName}}</h4>
+						<p class="category">{{accountNumber}}</p>
+					</div>
+					<div class="content table-responsive table-full-width">
+						<table class="table table-hover table-striped">
+							<thead>
+								<th><b>Transaction</b></th>
+								<th><b>Date</b></th>
+								<th><b>Amount</b></th>
+								<th><b>Type</b></th>
+								<th><b>From</b></th>
+								<th><b>To</b></th>
+								<th><b>Balance</b></th>
+								<th><b>Comments</b></th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="record in transactions|orderBy:'-createdAt'">
+									<td>{{record.name}}</td>
+									<td>{{record.createdAt|date : "MMM dd y HH:mm"}}</td>
+									<td><b>{{record.amount|currency:symbol}}</b></td>
+									<td>{{record.type}} {{record.category}}</td>
+									<td>{{record.fro}}</td>
+									<td>{{record.to}}</td>
+									<td>{{record.balance|currency:symbol}}</td>
+									<td>{{record.comments}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div ng-if="loading">
+							<center><img src="img/spinner.gif"></center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

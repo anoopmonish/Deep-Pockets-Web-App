@@ -1,0 +1,97 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Perform New Transaction</h4>
+				<div ng-if="dataFailed" class="text-danger">
+					<i class="pe-7s-info"></i>&nbsp;
+					<b>Connection failed. Please try later</b>
+				</div>
+			</div>
+			<div class="content">
+				<form name="transactionForm" ng-submit="submitTransaction()">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Transaction</label>
+								<input type="text" ng-required="true" class="form-control" placeholder="Description" ng-model="transaction.name"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>Type</label>
+								<select ng-change="updateByType()" ng-required="true" class="form-control" placeholder="Account Type" ng-model="transaction.type">
+									<option value="Deposit">Deposit</option>
+									<option value="Expenditure">Expenditure</option>
+									<option value="Internal Transfer">Internal Transfer</option>
+								</select>
+							</div>
+						</div>
+						<div ng-if="transaction.type == 'Expenditure'" class="col-md-2">
+							<div class="form-group">
+								<label>Category</label>
+								<select ng-required="true" class="form-control" placeholder="Category" ng-model="transaction.category">
+									<option value="Education">Education</option>>
+									<option value="Entertainment">Entertainment</option>
+									<option value="Groceries">Groceries</option>
+									<option value="Household">Household</option>
+									<option value="Instalment">Instalment</option>
+									<option value="Lifestyle">Lifestyle</option>
+									<option value="Vehicle">Vehicle</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
+						</div>
+						<div ng-if="transaction.type == 'Expenditure' && transaction.category == 'Other'" class="col-md-3">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<input value="" type="text" ng-required="true" class="form-control" placeholder="Others Specify.." ng-model="other">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div ng-if="transaction.type != 'Deposit'" class="col-md-5">
+							<div class="form-group">
+								<label>From</label>
+								<select ng-change="updateByFro()" ng-required="true" value="Select From Account" class="form-control" placeholder="Account Type" ng-model="transaction.fro"
+								ng-options="account as account.name for account in froAccounts">
+								</select>
+							</div>
+						</div>
+						<div ng-if="transaction.type != 'Expenditure'" class="col-md-5">
+							<div class="form-group">
+								<label>To</label>
+								<select ng-required="true" value="Select To Account" class="form-control" placeholder="Account Type" ng-model="transaction.to"
+								ng-options="account as account.name for account in toAccounts">
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Amount</label>
+								<input type="number" ng-required="true" min="1" step="0.10" class="form-control" placeholder="Amount" ng-model="transaction.amount">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Comments</label>
+								<textarea rows="2" class="form-control" placeholder="Additional Information" ng-model="transaction.comments"></textarea>
+							</div>
+						</div>
+					</div>
+					<center><button ng-disabled="transactionForm.$invalid||buttonDisabled" type="submit" class="{{transactionForm.$invalid ? 'btn btn-disabled btn-sm' : 'btn btn-info btn-fill btn-sm'}}">
+					Submit</button></center>
+					<div ng-if="loading">
+						<center><img src="img/spinner.gif"></center>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

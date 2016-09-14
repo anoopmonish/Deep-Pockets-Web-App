@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="header">
+				<h4 class="title">Visuals</h4>
+				<p class="category"></p>
+			</div>
+			<div class="content">
+				<div>
+					<button ng-click="setColour('blue')" class="btn btn-primary btn-fill">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('azure')" class="btn btn-info btn-fill">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('green')" class="btn btn-success btn-fill">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('orange')" class="btn btn-warning btn-fill">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('red')" class="btn btn-danger btn-fill">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('none')" class="btn btn-default btn-fill">&nbsp;</button>&nbsp;
+					<button ng-click="setColour('purple')" class="btn btn-default btn-fill" style="border-color:purple;background:purple">&nbsp;</button>&nbsp;
+				</div>
+				<br><br>
+				<a ng-repeat="pic in pictures" href="">
+					<img ng-click="setPicture(pic)" class="img-thumbnail" ng-src="{{pic}}" width="100" height="100"/> &nbsp;
+				</a>
+				<br><br><br>
+				<center>
+					<button ng-disabled="disablebutton" ng-click="updateSettings()" class="btn btn-info btn-fill btn-md">Save</button>
+				</center>
+				<div ng-if="loading">
+					<center><img src="img/spinner.gif"></center>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
